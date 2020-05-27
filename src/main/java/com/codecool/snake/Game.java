@@ -42,6 +42,7 @@ public class Game extends Pane {
 
         Globals.getInstance().stopGame();
         Globals.getInstance().display.clear();
+        snakes.clear();
         Globals.getInstance().game.init();
         Globals.getInstance().game.start();
 
@@ -56,10 +57,6 @@ public class Game extends Pane {
         spawnPowerUps(1);
         spawnPowerUp2(1);
         spawnPowerUp3(1);
-        for(int i =0; i < snakes.size(); i++){
-            System.out.println("!!!!!!!!!");
-            System.out.println(snakes.size());
-        }
         GameLoop gameLoop = new GameLoop(snakes);
 
         Globals.getInstance().setGameLoop(gameLoop);
