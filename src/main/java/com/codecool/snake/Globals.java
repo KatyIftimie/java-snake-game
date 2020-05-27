@@ -33,6 +33,9 @@ public class Globals {
         resources.addImage("SnakeBody", new Image("snake_body.png"));
         resources.addImage("SimpleEnemy", new Image("simple_enemy.png"));
         resources.addImage("PowerUpBerry", new Image("powerup_berry.png"));
+        resources.addImage("PowerUp2", new Image("powerup_mario.png"));
+        resources.addImage("PowerUp3", new Image("powerup_pokemon.png"));
+        resources.addImage("AngryBird", new Image("angry_enemy.png"));
         resources.addImage("Health1", new Image("health-bar1.png"));
     }
 

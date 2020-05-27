@@ -12,21 +12,22 @@ import javafx.geometry.Point2D;
 
 
 
-public class SimpleEnemy extends Enemy implements Animatable, Interactable {
+public class SimpleEnemy2 extends Enemy implements Animatable, Interactable {
 
     private Point2D heading;
     private static Random rnd = new Random();
 
-    public SimpleEnemy() {
+    public SimpleEnemy2() {
         super(10);
 
-        setImage(Globals.getInstance().getImage("SimpleEnemy"));
-        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
-        double direction = rnd.nextDouble() * 360;
+        setImage(Globals.getInstance().getImage("AngryBird"));
+        setX(950);
+        setY(10);
+
+        double direction = 235;
         setRotate(direction);
 
-        int speed = 1;
+        int speed = 7;
         heading = Utils.directionToVector(direction, speed);
     }
 
@@ -34,7 +35,7 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
     public void step() {
         if (isOutOfBounds()) {
             destroy();
-            new SimpleEnemy();
+            new SimpleEnemy2();
         }
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());

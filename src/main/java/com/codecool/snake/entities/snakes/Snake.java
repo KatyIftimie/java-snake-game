@@ -11,7 +11,7 @@ import javafx.scene.input.KeyCode;
 
 
 public class Snake implements Animatable {
-    private static final float speed = 2;
+    private static float speed =2;
     private int health = 100;
 
     private SnakeHead head;
@@ -24,7 +24,9 @@ public class Snake implements Animatable {
 
         addPart(4);
     }
-
+    public void changeSpeed(float number){
+        speed += number;
+    }
     public void step() {
         SnakeControl turnDir = getUserInput();
         head.updateRotation(turnDir, speed);
@@ -34,7 +36,19 @@ public class Snake implements Animatable {
 
         body.doPendingModifications();
     }
+    public int getHealth(){
+        return this.health;
+    }
+    public int addHealth(int number){
+        if (health + number <= 100){
+            return health += number;
 
+        }
+        else{
+            return health = 100;
+        }
+
+    }
     private SnakeControl getUserInput() {
         SnakeControl turnDir = SnakeControl.INVALID;
         if(InputHandler.getInstance().isKeyPressed(KeyCode.LEFT)) turnDir = SnakeControl.TURN_LEFT;
@@ -57,6 +71,9 @@ public class Snake implements Animatable {
         health += diff;
     }
 
+    public void removeHealth(int number){
+        health -= number;
+    }
     private void checkForGameOverConditions() {
         if (head.isOutOfBounds() || health <= 0) {
             System.out.println("Game Over");
