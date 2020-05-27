@@ -23,7 +23,6 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
         setImage(Globals.getInstance().getImage("SimpleEnemy"));
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
         setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
-
         double direction = rnd.nextDouble() * 360;
         setRotate(direction);
 
