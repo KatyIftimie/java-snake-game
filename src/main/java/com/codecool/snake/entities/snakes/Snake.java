@@ -72,6 +72,7 @@ public class Snake implements Animatable {
         SnakeControl turnDir = SnakeControl.INVALID;
         if(InputHandler.getInstance().isKeyPressed(KeyCode.LEFT)) turnDir = SnakeControl.TURN_LEFT;
         if(InputHandler.getInstance().isKeyPressed(KeyCode.RIGHT)) turnDir = SnakeControl.TURN_RIGHT;
+        if(InputHandler.getInstance().isKeyPressed(KeyCode.SPACE)) turnDir = SnakeControl.SHOOT;
         return turnDir;
     }
 
@@ -79,6 +80,7 @@ public class Snake implements Animatable {
         SnakeControl turnDir = SnakeControl.INVALID;
         if(InputHandler.getInstance().isKeyPressed(KeyCode.A)) turnDir = SnakeControl.TURN_LEFT;
         if(InputHandler.getInstance().isKeyPressed(KeyCode.D)) turnDir = SnakeControl.TURN_RIGHT;
+        if(InputHandler.getInstance().isKeyPressed(KeyCode.Q)) turnDir = SnakeControl.SHOOT;
         return turnDir;
     }
 
@@ -104,11 +106,6 @@ public class Snake implements Animatable {
         }
         Globals.getInstance().display.updateSnakeHeadDrawPosition(head);
     }
-
-
-
-
-
 
     public void changeHealth(int diff) {
         health += diff;

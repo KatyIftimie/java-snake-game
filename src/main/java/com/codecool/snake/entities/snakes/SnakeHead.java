@@ -5,6 +5,7 @@ import com.codecool.snake.Globals;
 import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.enemies.Enemy;
+import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy2;
 import com.codecool.snake.entities.powerups.PowerUp2;
 import com.codecool.snake.entities.powerups.PowerUp3;
@@ -21,8 +22,12 @@ public class SnakeHead extends GameEntity implements Interactable {
         this.snake = snake;
         setImage(Globals.getInstance().getImage(name));
         setPosition(position);
+
     }
 
+    private void spawnShoot(int numberOfEnemies) {
+        for(int i = 0; i < numberOfEnemies; ++i) new Shoot();
+    };
     public void updateRotation(SnakeControl turnDirection, float speed) {
         double headRotation = getRotate();
 
@@ -32,7 +37,9 @@ public class SnakeHead extends GameEntity implements Interactable {
         if (turnDirection.equals(SnakeControl.TURN_RIGHT)) {
             headRotation = headRotation + turnRate;
         }
-
+        if (turnDirection.equals(SnakeControl.SHOOT)) {
+            spawnShoot(3);
+        }
         // set rotation and position
         setRotate(headRotation);
         Point2D heading = Utils.directionToVector(headRotation, speed);

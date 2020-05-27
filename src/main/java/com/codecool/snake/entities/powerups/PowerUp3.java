@@ -24,7 +24,7 @@ public class PowerUp3 extends GameEntity implements Interactable, Animatable {
         double direction = rnd.nextDouble() * 360;
         setRotate(direction);
 
-        int speed = 1;
+        int speed = 0;
         heading = Utils.directionToVector(direction, speed);
 
     }
