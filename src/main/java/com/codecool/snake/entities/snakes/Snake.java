@@ -78,4 +78,6 @@ public class Snake implements Animatable {
         if(result != null) return result;
         return head;
     }
+
+//    private get
 }

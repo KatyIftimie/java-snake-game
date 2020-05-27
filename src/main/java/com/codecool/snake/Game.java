@@ -6,13 +6,20 @@ import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.eventhandler.InputHandler;
 
 import javafx.geometry.Point2D;
+
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+
 
 
 public class Game extends Pane {
     private Snake snake = null;
     private GameTimer gameTimer = new GameTimer();
+    Rectangle healthBar = new Rectangle();
 
 
     public Game() {
@@ -23,25 +30,47 @@ public class Game extends Pane {
         init();
     }
 
+
+    public void handler() {
+
+        Globals.getInstance().stopGame();
+        Globals.getInstance().display.clear();
+        Globals.getInstance().game.init();
+        Globals.getInstance().game.start();
+
+    }
+
+
     public void init() {
+
         spawnSnake();
         spawnEnemies(4);
         spawnPowerUps(4);
-
         GameLoop gameLoop = new GameLoop(snake);
         Globals.getInstance().setGameLoop(gameLoop);
         gameTimer.setup(gameLoop::step);
         gameTimer.play();
+        healthBar.setX(10);
+        healthBar.setY(10);
+        healthBar.setHeight(25);
+        healthBar.setWidth(120);
+        getChildren().add(healthBar);
+
     }
+
 
     public void start() {
         setupInputHandling();
+        restartButton(Globals.getInstance().game);
         Globals.getInstance().startGame();
+        System.out.println("Start");
     }
 
     private void spawnSnake() {
         snake = new Snake(new Point2D(500, 500));
+        snake = new Snake(new Point2D(400, 400));
     }
+
 
     private void spawnEnemies(int numberOfEnemies) {
         for(int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
@@ -55,5 +84,22 @@ public class Game extends Pane {
         Scene scene = getScene();
         scene.setOnKeyPressed(event -> InputHandler.getInstance().setKeyPressed(event.getCode()));
         scene.setOnKeyReleased(event -> InputHandler.getInstance().setKeyReleased(event.getCode()));
+    }
+
+    public void restartButton(Game game) {
+        Button restartButton = new Button("Restart");
+        restartButton.setPrefSize(100, 20);
+        restartButton.setLayoutX(880);
+        restartButton.setLayoutY(660);
+        game.getChildren().add(restartButton);
+
+        restartButton.setOnAction(new EventHandler<ActionEvent>() {
+
+            public void handle(ActionEvent event) {
+                handler();
+            }
+        });
+        game.requestFocus();
+
     }
 }
