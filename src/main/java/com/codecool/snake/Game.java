@@ -17,10 +17,14 @@ import javafx.scene.shape.Rectangle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Game extends Pane {
-    private Snake snake = null;
+    private Snake  snake1;
+    private Snake  snake2;
+    private List <Snake> snakes = new ArrayList<>();
     private GameTimer gameTimer = new GameTimer();
     Rectangle healthBar = new Rectangle();
 
@@ -38,6 +42,7 @@ public class Game extends Pane {
 
         Globals.getInstance().stopGame();
         Globals.getInstance().display.clear();
+        snakes.clear();
         Globals.getInstance().game.init();
         Globals.getInstance().game.start();
 
@@ -52,9 +57,12 @@ public class Game extends Pane {
         spawnPowerUps(1);
         spawnPowerUp2(1);
         spawnPowerUp3(1);
-        GameLoop gameLoop = new GameLoop(snake);
+        GameLoop gameLoop = new GameLoop(snakes);
+
         Globals.getInstance().setGameLoop(gameLoop);
+
         gameTimer.setup(gameLoop::step);
+
         gameTimer.play();
         healthBar.setX(10);
         healthBar.setY(10);
@@ -73,8 +81,11 @@ public class Game extends Pane {
     }
 
     private void spawnSnake() {
-        snake = new Snake(new Point2D(500, 500));
-        snake = new Snake(new Point2D(400, 400));
+        snake1 = new Snake(new Point2D(400, 400), 0);
+        snake2 = new Snake(new Point2D(500, 500), 1);
+        snakes.add(snake1) ;
+        snakes.add(snake2) ;
+
     }
 
 

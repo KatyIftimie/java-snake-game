@@ -13,22 +13,34 @@ import javafx.scene.input.KeyCode;
 public class Snake implements Animatable {
     private static float speed =2;
     private int health = 100;
-
+    private  int id;
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
 
 
-    public Snake(Point2D position) {
+    public Snake(Point2D position, int id) {
         head = new SnakeHead(this, position);
         body = new DelayedModificationList<>();
-
+        this.id = id;
         addPart(4);
     }
     public void changeSpeed(float number){
         speed += number;
     }
     public void step() {
-        SnakeControl turnDir = getUserInput();
+
+        SnakeControl turnDir = getUserInput2();
+        switch (id) {
+            case 0:
+            turnDir = getUserInput2();
+            break;
+            case 1:
+                turnDir = getUserInput();
+                break;
+
+        }
+
+
         head.updateRotation(turnDir, speed);
 
         updateSnakeBodyHistory();
@@ -53,6 +65,13 @@ public class Snake implements Animatable {
         SnakeControl turnDir = SnakeControl.INVALID;
         if(InputHandler.getInstance().isKeyPressed(KeyCode.LEFT)) turnDir = SnakeControl.TURN_LEFT;
         if(InputHandler.getInstance().isKeyPressed(KeyCode.RIGHT)) turnDir = SnakeControl.TURN_RIGHT;
+        return turnDir;
+    }
+
+    private SnakeControl getUserInput2() {
+        SnakeControl turnDir = SnakeControl.INVALID;
+        if(InputHandler.getInstance().isKeyPressed(KeyCode.A)) turnDir = SnakeControl.TURN_LEFT;
+        if(InputHandler.getInstance().isKeyPressed(KeyCode.D)) turnDir = SnakeControl.TURN_RIGHT;
         return turnDir;
     }
 
