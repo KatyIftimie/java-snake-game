@@ -9,19 +9,22 @@ import com.codecool.snake.entities.enemies.Enemy;
 import javafx.geometry.Point2D;
 
 public class Shoot extends GameEntity implements Animatable, Interactable {
-    SnakeHead head;
+//    SnakeHead head;
+    private Snake snake;
     private Point2D desenat;
-    public Shoot() {
+    public Shoot(Snake snake) {
+        this.snake = snake;
         setImage(Globals.getInstance().getImage("Shoot"));
 
-        setX(head.getX());
-        setY(head.getY());
+        setX(snake.getHead().getX());
+        setY(snake.getHead().getY());
 
-        double direction = head.getRotate();
+        double direction = snake.getHead().getRotate();
         setRotate(direction);
 
-        int speed = 1;
+        int speed = 3;
         desenat = Utils.directionToVector(direction, speed);
+
 
     }
 
@@ -29,7 +32,8 @@ public class Shoot extends GameEntity implements Animatable, Interactable {
     public void step() {
         if (isOutOfBounds()) {
             destroy();}
-
+        setX(getX() + desenat.getX());
+        setY(getY() + desenat.getY());
     }
 
     @Override

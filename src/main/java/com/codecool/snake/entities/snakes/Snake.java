@@ -58,6 +58,11 @@ public class Snake implements Animatable {
     public int getHealth(){
         return this.health;
     }
+
+    public SnakeHead getHead() {
+        return head;
+    }
+
     public int addHealth(int number){
         if (health + number <= 100){
             return health += number;

@@ -24,10 +24,10 @@ public class SnakeHead extends GameEntity implements Interactable {
         setPosition(position);
 
     }
-
-    private void spawnShoot(int numberOfEnemies) {
-        for(int i = 0; i < numberOfEnemies; ++i) new Shoot();
-    };
+//
+//    private void spawnShoot(int numberOfEnemies) {
+//        for(int i = 0; i < numberOfEnemies; ++i) Shoot shoot = new Shoot();
+//    };
     public void updateRotation(SnakeControl turnDirection, float speed) {
         double headRotation = getRotate();
 
@@ -38,7 +38,8 @@ public class SnakeHead extends GameEntity implements Interactable {
             headRotation = headRotation + turnRate;
         }
         if (turnDirection.equals(SnakeControl.SHOOT)) {
-            spawnShoot(3);
+            new Shoot(snake);
+            System.out.println("ME Shoot");
         }
         // set rotation and position
         setRotate(headRotation);
