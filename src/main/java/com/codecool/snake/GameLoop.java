@@ -8,12 +8,11 @@ import com.codecool.snake.entities.snakes.Snake;
 import java.util.List;
 
 public class GameLoop {
-    private Snake snake;
+    private List <Snake> snakes;
     private boolean running = false;
 
-    public GameLoop(List<Snake>  snake) { for(Snake elem : snake){
-        this.snake = elem;
-    }}
+    public GameLoop(List<Snake>  snakes) {
+        this.snakes = snakes; }
 
     public void start() {
         running = true;
@@ -25,7 +24,10 @@ public class GameLoop {
 
     public void step() {
         if(running) {
-            snake.step();
+            for(Snake snake : snakes){
+                snake.step();
+            }
+
             for (GameEntity gameObject : Globals.getInstance().display.getObjectList()) {
                 if (gameObject instanceof Animatable) {
                     ((Animatable) gameObject).step();
