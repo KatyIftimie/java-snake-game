@@ -21,7 +21,7 @@ public class PowerUp2 extends GameEntity implements Interactable, Animatable {
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
         setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
 
-        double direction =  360  ;
+        double direction = rnd.nextDouble() * 360;
         setRotate(direction);
 
         int speed = 1;

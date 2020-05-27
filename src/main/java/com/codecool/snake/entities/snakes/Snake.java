@@ -36,7 +36,19 @@ public class Snake implements Animatable {
 
         body.doPendingModifications();
     }
+    public int getHealth(){
+        return this.health;
+    }
+    public int addHealth(int number){
+        if (health + number <= 100){
+            return health += number;
 
+        }
+        else{
+            return health = 100;
+        }
+
+    }
     private SnakeControl getUserInput() {
         SnakeControl turnDir = SnakeControl.INVALID;
         if(InputHandler.getInstance().isKeyPressed(KeyCode.LEFT)) turnDir = SnakeControl.TURN_LEFT;
@@ -59,6 +71,9 @@ public class Snake implements Animatable {
         health += diff;
     }
 
+    public void removeHealth(int number){
+        health -= number;
+    }
     private void checkForGameOverConditions() {
         if (head.isOutOfBounds() || health <= 0) {
             System.out.println("Game Over");
