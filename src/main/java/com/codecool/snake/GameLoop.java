@@ -11,7 +11,9 @@ public class GameLoop {
     private Snake snake;
     private boolean running = false;
 
-    public GameLoop(Snake snake) { this.snake = snake; }
+    public GameLoop(List<Snake>  snake) { for(Snake elem : snake){
+        this.snake = elem;
+    }}
 
     public void start() {
         running = true;
