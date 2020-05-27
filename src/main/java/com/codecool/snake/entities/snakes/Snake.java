@@ -19,7 +19,14 @@ public class Snake implements Animatable {
 
 
     public Snake(Point2D position, int id) {
-        head = new SnakeHead(this, position);
+        switch (id){
+
+            case 0: head = new SnakeHead(this, position, "SnakeHead" );
+             break;
+            case 1: head = new SnakeHead(this, position, "SnakeHead2" );
+                break;
+        }
+
         body = new DelayedModificationList<>();
         this.id = id;
         addPart(4);
@@ -51,6 +58,11 @@ public class Snake implements Animatable {
     public int getHealth(){
         return this.health;
     }
+
+    public SnakeHead getHead() {
+        return head;
+    }
+
     public int addHealth(int number){
         if (health + number <= 100){
             return health += number;
@@ -65,6 +77,7 @@ public class Snake implements Animatable {
         SnakeControl turnDir = SnakeControl.INVALID;
         if(InputHandler.getInstance().isKeyPressed(KeyCode.LEFT)) turnDir = SnakeControl.TURN_LEFT;
         if(InputHandler.getInstance().isKeyPressed(KeyCode.RIGHT)) turnDir = SnakeControl.TURN_RIGHT;
+        if(InputHandler.getInstance().isKeyPressed(KeyCode.SPACE)) turnDir = SnakeControl.SHOOT;
         return turnDir;
     }
 
@@ -72,6 +85,7 @@ public class Snake implements Animatable {
         SnakeControl turnDir = SnakeControl.INVALID;
         if(InputHandler.getInstance().isKeyPressed(KeyCode.A)) turnDir = SnakeControl.TURN_LEFT;
         if(InputHandler.getInstance().isKeyPressed(KeyCode.D)) turnDir = SnakeControl.TURN_RIGHT;
+        if(InputHandler.getInstance().isKeyPressed(KeyCode.Q)) turnDir = SnakeControl.SHOOT;
         return turnDir;
     }
 
@@ -80,8 +94,20 @@ public class Snake implements Animatable {
         Point2D position = parent.getPosition();
 
         for (int i = 0; i < numParts; i++) {
-            SnakeBody newBodyPart = new SnakeBody(position);
-            body.add(newBodyPart);
+            SnakeBody newBodyPart = new SnakeBody(position, "0");
+            switch (id){
+
+                case 0:
+                    newBodyPart = new SnakeBody(position, "SnakeBody");
+                    body.add(newBodyPart);
+                    break;
+                case 1:
+                    newBodyPart = new SnakeBody(position, "SnakeBody2");
+                    body.add(newBodyPart);
+                    break;
+
+            }
+
         }
         Globals.getInstance().display.updateSnakeHeadDrawPosition(head);
     }

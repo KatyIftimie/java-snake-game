@@ -5,7 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -19,6 +20,10 @@ public class Main extends Application {
 
 
         Game game = new Game();
+        BackgroundImage myBI= new BackgroundImage(new Image("snakeGrassBackground.png",Globals.WINDOW_WIDTH,Globals.WINDOW_HEIGHT,false,true),
+                BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+        game.setBackground(new Background(myBI));
         Scene mainScene = new Scene(game, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT);
 
         primaryStage.setTitle("Snake Game");

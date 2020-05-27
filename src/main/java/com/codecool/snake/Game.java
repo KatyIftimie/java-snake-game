@@ -52,11 +52,11 @@ public class Game extends Pane {
     public void init() {
 
         spawnSnake();
-        spawnEnemies(1);
-        spawnEnemies2(3);
+        spawnEnemies(5);
+        spawnEnemies2(1);
         spawnPowerUps(1);
-        spawnPowerUp2(1);
-        spawnPowerUp3(1);
+        spawnPowerUp2(3);
+        spawnPowerUp3(3);
         GameLoop gameLoop = new GameLoop(snakes);
 
         Globals.getInstance().setGameLoop(gameLoop);

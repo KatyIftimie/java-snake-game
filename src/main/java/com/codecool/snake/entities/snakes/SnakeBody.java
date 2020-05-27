@@ -13,8 +13,8 @@ public class SnakeBody extends GameEntity {
     private Queue<Point2D> history = new LinkedList<>();
     private static final int historySize = 10;
 
-    public SnakeBody(Point2D coord) {
-        setImage(Globals.getInstance().getImage("SnakeBody"));
+    public SnakeBody(Point2D coord,String name) {
+        setImage(Globals.getInstance().getImage(name));
         setX(coord.getX());
         setY(coord.getY());
 

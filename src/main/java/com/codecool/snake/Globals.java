@@ -31,12 +31,15 @@ public class Globals {
         resources = new Resources();
         resources.addImage("SnakeHead", new Image("snake_head.png"));
         resources.addImage("SnakeBody", new Image("snake_body.png"));
-        resources.addImage("SimpleEnemy", new Image("simple_enemy.png"));
+        resources.addImage("SnakeHead2", new Image("secondSnake_head.png"));
+        resources.addImage("SnakeBody2", new Image("secondSsnake_body.png"));
+        resources.addImage("SimpleEnemy", new Image("enemy_confuseAngryBird.png"));
         resources.addImage("PowerUpBerry", new Image("powerup_berry.png"));
         resources.addImage("PowerUp2", new Image("powerup_mario.png"));
         resources.addImage("PowerUp3", new Image("powerup_pokemon.png"));
         resources.addImage("AngryBird", new Image("angry_enemy.png"));
         resources.addImage("Health1", new Image("health-bar1.png"));
+        resources.addImage("Shoot", new Image("greenGhost_enemy.png"));
     }
 
     public Image getImage(String name) { return resources.getImage(name); }
