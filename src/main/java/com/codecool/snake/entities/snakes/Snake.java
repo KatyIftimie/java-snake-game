@@ -19,7 +19,14 @@ public class Snake implements Animatable {
 
 
     public Snake(Point2D position, int id) {
-        head = new SnakeHead(this, position);
+        switch (id){
+
+            case 0: head = new SnakeHead(this, position, "SnakeHead" );
+             break;
+            case 1: head = new SnakeHead(this, position, "SnakeHead2" );
+                break;
+        }
+
         body = new DelayedModificationList<>();
         this.id = id;
         addPart(4);
@@ -80,11 +87,28 @@ public class Snake implements Animatable {
         Point2D position = parent.getPosition();
 
         for (int i = 0; i < numParts; i++) {
-            SnakeBody newBodyPart = new SnakeBody(position);
-            body.add(newBodyPart);
+            SnakeBody newBodyPart = new SnakeBody(position, "0");
+            switch (id){
+
+                case 0:
+                    newBodyPart = new SnakeBody(position, "SnakeBody");
+                    body.add(newBodyPart);
+                    break;
+                case 1:
+                    newBodyPart = new SnakeBody(position, "SnakeBody2");
+                    body.add(newBodyPart);
+                    break;
+
+            }
+
         }
         Globals.getInstance().display.updateSnakeHeadDrawPosition(head);
     }
+
+
+
+
+
 
     public void changeHealth(int diff) {
         health += diff;
