@@ -8,8 +8,8 @@ import javafx.scene.layout.Pane;
 public class Globals {
     private static Globals instance = null;
 
-    public static final double WINDOW_WIDTH = 1000;
-    public static final double WINDOW_HEIGHT = 700;
+    public static final double WINDOW_WIDTH = 1300;
+    public static final double WINDOW_HEIGHT = 900;
 
     public Display display;
     public Game game;
@@ -40,6 +40,9 @@ public class Globals {
         resources.addImage("AngryBird", new Image("angry_enemy.png"));
         resources.addImage("Health1", new Image("health-bar1.png"));
         resources.addImage("Shoot", new Image("projectile.png"));
+
+        resources.addImage("HealthBoth", new Image("healthBarsPlayer1and2.png"));
+
     }
 
     public Image getImage(String name) { return resources.getImage(name); }
