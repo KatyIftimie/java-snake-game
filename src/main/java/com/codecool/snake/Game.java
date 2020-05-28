@@ -30,29 +30,24 @@ public class Game extends Pane {
 
     public int getSnake2Health() {
         System.out.println(snake2.getHealth());
-        return snake2.getHealth();
+        return this.snake2.getHealth();
     }
     public int getSnake1Health() {
-        return snake1.getHealth();
+        return this.snake1.getHealth();
     }
 
 
-//    public health = Snake getS
 
     private List <Snake> snakes = new ArrayList<>();
     private GameTimer gameTimer = new GameTimer();
-    Rectangle healthBar1 = new Rectangle();
-    Rectangle healthBar2 = new Rectangle();
-    private Point2D healthBarImg;
-    double maxHealth = 100;
+
 
 
     public Game() {
         Globals.getInstance().game = this;
         Globals.getInstance().display = new Display(this);
         Globals.getInstance().setupResources();
-//        getChildren().add(healthBar1);
-//        getChildren().add(healthBar2);
+
 
         init();
     }
@@ -79,20 +74,9 @@ public class Game extends Pane {
         spawnPowerUp2(3);
         spawnPowerUp3(3);
         GameLoop gameLoop = new GameLoop(snakes);
+        getChildren().add(snake1.getHealthBar());
+        getChildren().add(snake2.getHealthBar());
 
-        healthBar1.setX(35);
-        healthBar1.setY(24);
-        healthBar1.setHeight(18);
-        healthBar1.setWidth(getSnake1Health()/maxHealth * 150);
-        healthBar1.setFill(Color.rgb(75,142,197));
-        healthBar2.setX(35);
-        healthBar2.setY(70);
-        healthBar2.setHeight(18);
-        healthBar2.setWidth(getSnake2Health()/maxHealth * 150);
-        healthBar2.setFill(Color.rgb(255,222,79));
-
-        getChildren().add(healthBar1);
-        getChildren().add(healthBar2);
 
         Globals.getInstance().setGameLoop(gameLoop);
 
@@ -101,9 +85,6 @@ public class Game extends Pane {
         gameTimer.setup(gameLoop::step);
 
         gameTimer.play();
-// currenthealth/maxhealth * healthbar width
-//        getChildren().add(healthBar1);
-//        getChildren().add(healthBar2);
         ImageView hearth = new ImageView();
          hearth.setImage(Globals.getInstance().getImage("HealthBoth"));
          hearth.setX(10);
