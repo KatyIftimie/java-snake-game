@@ -23,6 +23,7 @@ public class GameLoop {
     }
 
     public void step() {
+
         if(running) {
             for(Snake snake : snakes){
                 snake.step();

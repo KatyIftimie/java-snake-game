@@ -8,22 +8,37 @@ import com.codecool.snake.eventhandler.InputHandler;
 
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 
 public class Snake implements Animatable {
     private static float speed =2;
     private int health = 100;
+    private double maxHealth = 100;
     private  int id;
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
+    public Rectangle healthBar = new Rectangle();
+//    public Rectangle healthBar2 = new Rectangle();
 
 
     public Snake(Point2D position, int id) {
         switch (id){
 
             case 0: head = new SnakeHead(this, position, "SnakeHead" );
+                healthBar.setX(35);
+                healthBar.setY(24);
+                healthBar.setHeight(18);
+                healthBar.setWidth(getHealth()/maxHealth * 150);
+                healthBar.setFill(Color.rgb(75,142,197));
              break;
             case 1: head = new SnakeHead(this, position, "SnakeHead2" );
+                    healthBar.setX(35);
+                    healthBar.setY(70);
+                    healthBar.setHeight(18);
+                    healthBar.setWidth(getHealth()/maxHealth * 150);
+                    healthBar.setFill(Color.rgb(255,222,79));
                 break;
         }
 
@@ -35,14 +50,14 @@ public class Snake implements Animatable {
         speed += number;
     }
     public void step() {
-
+        healthBar.setWidth(getHealth()/maxHealth * 150);
         SnakeControl turnDir = getUserInput2();
         switch (id) {
             case 0:
-            turnDir = getUserInput2();
+            turnDir = getUserInput();
             break;
             case 1:
-                turnDir = getUserInput();
+                turnDir = getUserInput2();
                 break;
 
         }
@@ -59,18 +74,26 @@ public class Snake implements Animatable {
         return this.health;
     }
 
+    public Rectangle getHealthBar() {
+        return healthBar;
+    }
+
     public SnakeHead getHead() {
         return head;
     }
 
     public int addHealth(int number){
-        if (health + number <= 100){
-            return health += number;
-
+//        if (health + number <= 100){
+//            return health += number;
+//
+//        }
+//        else{
+//            return health = 100;
+//        }
+        if(health + number > 100){
+            health = 100;
         }
-        else{
-            return health = 100;
-        }
+        return health;
 
     }
     private SnakeControl getUserInput() {
@@ -120,6 +143,13 @@ public class Snake implements Animatable {
         health -= number;
     }
     private void checkForGameOverConditions() {
+//        int i = 2;
+//        if ()
+//        switch (id){
+//            case 0:
+//                head.isOutOfBounds() || health <= 0
+//
+//        }
         if (head.isOutOfBounds() || health <= 0) {
             System.out.println("Game Over");
             Globals.getInstance().stopGame();
