@@ -40,7 +40,7 @@ public class Globals {
         resources.addImage("AngryBird", new Image("angry_enemy.png"));
         resources.addImage("Health1", new Image("health-bar1.png"));
         resources.addImage("Shoot", new Image("projectile.png"));
-
+        resources.addImage("CircleEnemy", new Image("enemy_hungryAngryBirs.png"));
         resources.addImage("HealthBoth", new Image("healthBarsPlayer1and2.png"));
 
     }
