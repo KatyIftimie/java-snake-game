@@ -26,7 +26,15 @@ public class InputHandler {
         if(keyStates.containsKey(key)) return keyStates.get(key);
         return false;
     }
+    public Boolean isKeyReleased(KeyCode key){
+        if(keyStates.containsKey(key)){
+            boolean state = keyStates.get(key);
+            keyStates.remove(key);
+            return state;
+        }
+        return false;
 
+    }
     private InputHandler() {
         // singleton needs the class to have private constructor
     }

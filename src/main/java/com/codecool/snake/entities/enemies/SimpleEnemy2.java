@@ -5,6 +5,7 @@ import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.snakes.Shoot;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import java.util.Random;
 
@@ -21,14 +22,14 @@ public class SimpleEnemy2 extends Enemy implements Animatable, Interactable {
         super(10);
 
         setImage(Globals.getInstance().getImage("AngryBird"));
-        setX(950);
+        setX(1250);
         setY(10);
-
         double direction = 235;
         setRotate(direction);
 
-        int speed = 7;
+        int speed = 5;
         heading = Utils.directionToVector(direction, speed);
+
     }
 
     @Override
@@ -39,11 +40,16 @@ public class SimpleEnemy2 extends Enemy implements Animatable, Interactable {
         }
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
+
     }
 
     @Override
     public void apply(GameEntity entity) {
         if(entity instanceof SnakeHead){
+            System.out.println(getMessage());
+            destroy();
+        }
+        if(entity instanceof Shoot) {
             System.out.println(getMessage());
             destroy();
         }
