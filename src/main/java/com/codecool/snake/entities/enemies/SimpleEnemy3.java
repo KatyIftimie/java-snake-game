@@ -24,8 +24,8 @@ public class SimpleEnemy3 extends Enemy implements Animatable, Interactable {
 
 
         setImage(Globals.getInstance().getImage("CircleEnemy"));
-        setX(250);
-        setY(110);
+        setX(810);
+        setY(510);
 
     }
 
