@@ -24,12 +24,12 @@ public class SimpleEnemy2 extends Enemy implements Animatable, Interactable {
         setImage(Globals.getInstance().getImage("AngryBird"));
         setX(1250);
         setY(10);
-
         double direction = 235;
         setRotate(direction);
 
         int speed = 5;
         heading = Utils.directionToVector(direction, speed);
+
     }
 
     @Override
@@ -40,6 +40,7 @@ public class SimpleEnemy2 extends Enemy implements Animatable, Interactable {
         }
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
+
     }
 
     @Override
