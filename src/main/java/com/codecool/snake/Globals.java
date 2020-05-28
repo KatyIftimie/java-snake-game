@@ -39,7 +39,7 @@ public class Globals {
         resources.addImage("PowerUp3", new Image("powerup_pokemon.png"));
         resources.addImage("AngryBird", new Image("angry_enemy.png"));
         resources.addImage("Health1", new Image("health-bar1.png"));
-        resources.addImage("Shoot", new Image("greenGhost_enemy.png"));
+        resources.addImage("Shoot", new Image("projectile.png"));
     }
 
     public Image getImage(String name) { return resources.getImage(name); }
