@@ -7,9 +7,13 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 
 import javafx.geometry.Rectangle2D;
 
+import javax.swing.text.html.parser.Entity;
 
 
 //public class Health extends Enemy {
+//
+//
+//}
 //    private Rectangle2D hBar;
 //    public HealthBar() {
 //        super(10);

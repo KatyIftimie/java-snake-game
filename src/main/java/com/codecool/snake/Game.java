@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.image.ImageView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
@@ -27,6 +28,7 @@ public class Game extends Pane {
     private List <Snake> snakes = new ArrayList<>();
     private GameTimer gameTimer = new GameTimer();
     Rectangle healthBar = new Rectangle();
+    private Point2D healthBarImg;
 
 
     public Game() {
@@ -60,6 +62,9 @@ public class Game extends Pane {
         GameLoop gameLoop = new GameLoop(snakes);
 
         Globals.getInstance().setGameLoop(gameLoop);
+//        setImage(Globals.getInstance().getImage("HealthBoth"));
+
+
 
         gameTimer.setup(gameLoop::step);
 
