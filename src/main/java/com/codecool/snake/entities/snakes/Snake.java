@@ -6,7 +6,9 @@ import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.eventhandler.InputHandler;
 
+import javafx.application.Platform;
 import javafx.geometry.Point2D;
+import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -14,7 +16,7 @@ import javafx.scene.shape.Rectangle;
 
 public class Snake implements Animatable
 {
-    private static float speed = 2;
+    private float speed = 2;
     private int health = 100;
     private final double maxHealth = 100;
     private int id;
@@ -74,6 +76,7 @@ public class Snake implements Animatable
         updateSnakeBodyHistory();
         checkForGameOverConditions();
 
+
         body.doPendingModifications();
     }
 
@@ -92,15 +95,9 @@ public class Snake implements Animatable
         return head;
     }
 
-    public int addHealth(int number)
+    public void addHealth(int number)
     {
-        if (health + number > 100) {
-            health = 100;
-        } else {
-            health += number;
-        }
-        return health;
-
+        this.health = Math.min(health + number, 100);
     }
 
     private SnakeControl getUserInput()
@@ -158,7 +155,19 @@ public class Snake implements Animatable
         if (head.isOutOfBounds() || health <= 0) {
             System.out.println("Game Over");
             Globals.getInstance().stopGame();
+
+            Platform.runLater(() -> {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Dialog");
+                alert.setHeaderText("Game Over");
+//                alert.setContentText("Game Over");
+
+                alert.showAndWait();
+            });
+
         }
+
+
     }
 
     private void updateSnakeBodyHistory()
