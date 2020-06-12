@@ -30,7 +30,7 @@ public class InputHandler {
         if(keyStates.containsKey(key)){
             boolean state = keyStates.get(key);
             keyStates.remove(key);
-            return state;
+            return !state;
         }
         return false;
 

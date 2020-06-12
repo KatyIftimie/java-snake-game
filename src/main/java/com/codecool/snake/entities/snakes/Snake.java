@@ -14,7 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 
-public class Snake implements Animatable
+ public class Snake implements Animatable
 {
     private float speed = 2;
     private int health = 100;
@@ -60,7 +60,7 @@ public class Snake implements Animatable
     public void step()
     {
         healthBar.setWidth(getHealth() / maxHealth * 150);
-        SnakeControl turnDir = getUserInput2();
+            SnakeControl turnDir = null;
         switch (id) {
             case 0:
                 turnDir = getUserInput();
@@ -114,7 +114,10 @@ public class Snake implements Animatable
         SnakeControl turnDir = SnakeControl.INVALID;
         if (InputHandler.getInstance().isKeyPressed(KeyCode.A)) turnDir = SnakeControl.TURN_LEFT;
         if (InputHandler.getInstance().isKeyPressed(KeyCode.D)) turnDir = SnakeControl.TURN_RIGHT;
-        if (InputHandler.getInstance().isKeyPressed(KeyCode.Q)) turnDir = SnakeControl.SHOOT;
+        if (InputHandler.getInstance().isKeyReleased(KeyCode.Q)){
+            System.out.println("!!!!!!!!!SADASD");
+            turnDir = SnakeControl.SHOOT;
+        }
         return turnDir;
     }
 
