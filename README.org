@@ -1,15 +1,17 @@
 #+OPTIONS: toc:nil num:nil ^:nil
 #+TITLE: Snake game
 
-This is a snake game with full 360 degree rotation.
+This is a snake game with full 360 degree rotation designed for 2 players.
+
+
+** Controllers and entities:
+#+html: <p align="center"><img src="screenshots/GameInstructions.jpg"/></p>
+
+** Game play:
+#+html: <p align="center"><img src="screenshots/GamePlay.jpg"/></p>
 
 * Development
 
-** Inside IntelliJ Idea
-
-   Open the projact as a Maven project. (by opening the =pom.xml=)
-
-   Run it from the maven sidebar by running the =javafx:run= target
 
 ** From command line
 
