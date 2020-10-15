@@ -8,7 +8,7 @@ This is a snake game with full 360 degree rotation designed for 2 players.
 #+html: <p align="center"><img src="screenshots/GameInstructions.jpg"/></p>
 
 ** Game play:
-#+html: <p align="center"><img src="screenshots/GamePlay.jpg"/></p>
+#+html: <p align="center"><img src="screenshots/gamePlay.jpg"/></p>
 
 * Development
 
